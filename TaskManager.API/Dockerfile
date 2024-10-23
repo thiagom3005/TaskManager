@@ -8,7 +8,7 @@ EXPOSE 8080
 EXPOSE 8081
 
 # Set environment variable for connection string
-ENV ConnectionStrings__DefaultConnection="Server=DESKTOP-C7P3N28\\SQLEXPRESS01;Database=TaskManagerDb;User Id=sa;Password=sysadmin;TrustServerCertificate=True;MultipleActiveResultSets=true;"
+ENV ConnectionStrings__DefaultConnection="Server=(localhost)\\SQLEXPRESS01;Database=TaskManagerDb;User Id=sa;Password=sysadmin;TrustServerCertificate=True;MultipleActiveResultSets=true;"
 
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build

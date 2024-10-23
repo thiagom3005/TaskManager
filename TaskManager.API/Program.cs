@@ -7,11 +7,9 @@ using TaskManager.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar logging
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -27,7 +25,6 @@ builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();

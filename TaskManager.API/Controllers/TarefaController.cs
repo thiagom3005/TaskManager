@@ -16,6 +16,9 @@ namespace TaskManager.API.Controllers
             _tarefaService = TarefaService;
         }
 
+        /// <summary>
+        /// Obtém todas as tarefas.
+        /// </summary>
         [HttpGet]
         [Route("GetAll")]
         public async Task<IActionResult> GetAll()
@@ -33,6 +36,10 @@ namespace TaskManager.API.Controllers
             return Ok(tarefaDtos);
         }
 
+        /// <summary>
+        /// Obtém uma tarefa pelo ID.
+        /// </summary>
+        /// <param name="id">ID da tarefa</param>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -51,6 +58,9 @@ namespace TaskManager.API.Controllers
             return Ok(tarefaDto);
         }
 
+        /// <summary>
+        /// Obtém todas as tarefas pendentes.
+        /// </summary>
         [HttpGet]
         [Route("GetTarefasPendentes")]
         public async Task<IActionResult> GetTarefasPendentes()
@@ -68,6 +78,11 @@ namespace TaskManager.API.Controllers
             return Ok(tarefaDtos);
         }
 
+        /// <summary>
+        /// Cria uma nova tarefa.
+        /// </summary>
+        /// <param name="tarefaDto">Dados da tarefa</param>
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody] TarefaDto tarefaDto)
         {
             var tarefa = new Tarefa
@@ -84,6 +99,11 @@ namespace TaskManager.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = tarefaDto.Id }, tarefaDto);
         }
 
+        /// <summary>
+        /// Atualiza uma tarefa existente.
+        /// </summary>
+        /// <param name="id">ID da tarefa</param>
+        /// <param name="tarefaDto">Dados atualizados da tarefa</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] TarefaDto tarefaDto)
         {
@@ -100,6 +120,10 @@ namespace TaskManager.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Exclui uma tarefa pelo ID.
+        /// </summary>
+        /// <param name="id">ID da tarefa</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
